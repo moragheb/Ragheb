@@ -1,0 +1,43 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "0.10.61.36676",
+      "templateHash": "6711570732174242120"
+    }
+  },
+  "parameters": {
+    "ResourceName": {
+      "type": "string",
+      "metadata": {
+        "description": "Name of the KeyVault resource ex. kv-myservice."
+      }
+    },
+    "principalId": {
+      "type": "string",
+      "metadata": {
+        "description": "Principal Id of the Azure resource (Managed Identity)."
+      }
+    },
+    "RoleDefentionID": {
+      "type": "string",
+      "metadata": {
+        "description": "Assigned permissions for Principal Id (Managed Identity)"
+      }
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Authorization/roleAssignments",
+      "apiVersion": "2020-10-01-preview",
+      "name": "[guid(format('{0}{1}{2}', parameters('ResourceName'), deployment().name, parameters('RoleDefentionID')))]",
+      "properties": {
+        "principalType": "ServicePrincipal",
+        "roleDefinitionId": "[subscriptionResourceId('Microsoft.Authorization/roleDefinitions', parameters('RoleDefentionID'))]",
+        "principalId": "[parameters('principalId')]"
+      }
+    }
+  ]
+}
