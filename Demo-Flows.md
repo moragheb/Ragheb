@@ -3,7 +3,7 @@
 ## Demo 1: Sync FO Product Catalog (Guide Me Mode)
 
 ```mermaid
-flowchart LR
+flowchart TD
 	subgraph Trigger["🕐 HTTP Trigger"]
 		HTTP["HTTP Request<br/>ProductCatalogSyncRequest"]
 	end
@@ -61,7 +61,7 @@ flowchart LR
 ## Demo 2: Handle Customer Data Validation (Ask Me Everything Mode)
 
 ```mermaid
-flowchart LR
+flowchart TD
 	subgraph Trigger2["📨 Service Bus Trigger"]
 		SBT["Service Bus Message<br/>CustomerDataMessage"]
 	end
@@ -123,7 +123,7 @@ flowchart LR
 ## Demo 3: Process Inventory Adjustments Batch (Pre-Filled Form Mode)
 
 ```mermaid
-flowchart LR
+flowchart TD
 	subgraph Trigger3["⏰ Timer Trigger"]
 		Timer["Timer Schedule<br/>(Cron Expression)"]
 	end
